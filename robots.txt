@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smorcolno.github.io/i-game-portal-com-cn/sitemap.xml

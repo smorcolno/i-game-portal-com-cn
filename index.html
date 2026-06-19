@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 一笔带过的游戏发现角落</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f7fafc;
+            color: #1f2937;
+            line-height: 1.7;
+            padding: 1.5rem;
+        }
+
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 32, 64, 0.04);
+            overflow: hidden;
+            padding: 2.2rem 2rem 2.8rem;
+        }
+
+        /* 网格卡片背景（极淡） */
+        .wrapper {
+            background-image: 
+                repeating-linear-gradient(0deg, rgba(194, 223, 225, 0.12) 0px, rgba(194, 223, 225, 0.12) 1px, transparent 1px, transparent 24px),
+                repeating-linear-gradient(90deg, rgba(194, 223, 225, 0.12) 0px, rgba(194, 223, 225, 0.12) 1px, transparent 1px, transparent 24px);
+            background-color: #ffffff;
+        }
+
+        /* 标签式的小标题装饰 */
+        .badge {
+            display: inline-block;
+            background: #e2f0ef;
+            color: #1b6b6a;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0c4a4a;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: #3f5a5a;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #399c9b;
+            padding-left: 1.1rem;
+            background: #f4faf9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 16px 16px 0;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            font-size: 1rem;
+        }
+
+        .highlight-link {
+            color: #1a7a79;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #b7d9d8;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            padding: 0 0.1rem;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #1a7a79;
+            background: #e3f5f4;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .card {
+            background: #f4faf9;
+            border-radius: 20px;
+            padding: 1.2rem 1rem 1.1rem;
+            box-shadow: 0 2px 4px rgba(13, 85, 84, 0.04);
+            border: 1px solid #d8eae9;
+            transition: all 0.15s ease;
+        }
+
+        .card:hover {
+            border-color: #89c2c1;
+            background: #eff8f7;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0f5c5b;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #37605f;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        blockquote {
+            background: #eaf4f3;
+            border-left: 4px solid #50b6b5;
+            padding: 0.8rem 1.4rem;
+            margin: 1.8rem 0 2rem;
+            border-radius: 0 60px 60px 0;
+            font-style: normal;
+            color: #1a4f4e;
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+        }
+
+        .faq-mini {
+            margin-top: 2rem;
+            border-top: 1px dashed #c6dad9;
+            padding-top: 1.6rem;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1a6b6a;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-a {
+            color: #3b5b5a;
+            font-size: 0.95rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid #b2d3d2;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dae9e8;
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .visitor-note {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #5f7a79;
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #d5e4e3;
+        }
+
+        .visitor-note span {
+            background: #e3efee;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 540px) {
+            body { padding: 0.8rem; }
+            .wrapper { padding: 1.6rem 1.2rem 2rem; }
+            h1 { font-size: 1.8rem; }
+            .lead { font-size: 1rem; padding: 0.6rem 1rem; }
+            .grid-cards { grid-template-columns: 1fr; gap: 0.9rem; }
+            .card { padding: 1rem 0.9rem; }
+            blockquote { margin: 1.2rem 0; padding: 0.6rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <span class="badge">✦ 轻简介绍</span>
+        <h1>爱游戏：一座安静的索引花园</h1>
+
+        <div class="lead">
+            不需要注册，不需要下载，只提供一个方向：从这里出发，找到你真正想玩的游戏。<br>
+            这个网站不对“好玩”下定义，它只是把入口指给你。
+        </div>
+
+        <p>
+            第一次打开 <a href="https://i-game-portal.com.cn" class="highlight-link">爱游戏</a> 的人，往往会愣一下——页面很安静，没有弹窗，没有开屏广告，甚至没有醒目的“开始”按钮。它更像一张条目清晰的卡片架，把各种游戏类型、平台或兴趣标签整理好，放成一排。你想找某类作品，顺着标签走过去就是。
+        </p>
+
+        <p>
+            我习惯把它看作一个枢纽。很多次我在各个论坛刷到感兴趣的游戏名字，却记不起它属于哪个平台、哪个系列。这时打开爱游戏，按分类或者关键词顺一遍，通常几分钟就能定位。它不负责评价，只负责连接。这种克制，反而让人愿意反复回来。
+        </p>
+
+        <div class="grid-cards">
+            <div class="card">
+                <h3>按类型找</h3>
+                <p>角色扮演、策略、模拟、独立……每个分类下都是经过整理的列表，省去在搜索引擎里反复过滤的时间。</p>
+            </div>
+            <div class="card">
+                <h3>按平台筛</h3>
+                <p>PC、主机、移动端？直接选平台，内容自动收窄。适合跨平台玩家快速锁定范围。</p>
+            </div>
+            <div class="card">
+                <h3>兴趣标签</h3>
+                <p>像素风、剧情驱动、rougelike、沙盒……比分类更细，适合凭感觉淘游戏。</p>
+            </div>
+            <div class="card">
+                <h3>保持简单</h3>
+                <p>没有用户系统，没有社区评论，没有排行榜。入口就是入口，干净利落。</p>
+            </div>
+        </div>
+
+        <blockquote>
+            <p>“网站越是想把所有东西都推给你，你越不知道该往哪走。爱游戏选择退一步——它只告诉你‘这里有路’。” —— 一位用了两年多的普通玩家</p>
+        </blockquote>
+
+        <p>
+            最初我是通过朋友转发的一个链接知道的。朋友说：“你总问有哪些冷门策略游戏，去看这个站就行。” 我去了，第一印象是朴素，但翻了几页之后发现，它收集的条目意外地全，而且几乎没有死链。后来自己找独立游戏、甚至帮家人查休闲手游，都会先开这个页面。它不惊艳，但足够可靠。
+        </p>
+
+        <p>
+            如果一定要说一个缺点，那就是它不提供任何“推荐算法”。你得自己判断、自己挑选。不过换个角度想，这也意味着你不会被大数据推着走。每次打开 <a href="https://i-game-portal.com.cn" class="highlight-link">爱游戏</a>，主动权都在你手上——你清楚自己是来找什么的，它只是在旁边递一下目录。
+        </p>
+
+        <hr>
+
+        <div class="faq-mini">
+            <div class="faq-item">
+                <span class="faq-q">▸ 爱游戏需要注册吗？</span>
+                <div class="faq-a">完全不需要。打开即用，无账号系统，不收集个人信息。</div>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">▸ 上面的游戏链接去哪里了？</span>
+                <div class="faq-a">每个条目都指向对应的官方商店、Steam 页面或开发者网站。爱游戏只做索引，不托管内容。</div>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">▸ 网站会持续更新吗？</span>
+                <div class="faq-a">维护者会定期补充新游戏和修正链接。更新节奏不频繁，但一直在做。</div>
+            </div>
+        </div>
+
+        <div class="visitor-note">
+            <span>✦ 你站在入口处，方向由你自己决定</span>
+        </div>
+    </div>
+</body>
+</html>
