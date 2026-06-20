@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JRS直播 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f1f3f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #212529;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            padding: 3rem 2rem 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1e2a35;
+            margin-bottom: 0.75rem;
+        }
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #5c6b7a;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: #eef2f5;
+            color: #2c3e50;
+            font-size: 0.9rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #dde3ea;
+        }
+
+        /* card 通用 */
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e6eaef;
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1f2a33;
+            border-left: 4px solid #4b6a8b;
+            padding-left: 0.8rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #2d3945;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin-top: 0.6rem;
+        }
+        .card ul li {
+            background: #f6f8fa;
+            padding: 0.3rem 1rem 0.3rem 1.8rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #1f2933;
+            border: 1px solid #e2e8ed;
+            position: relative;
+        }
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0.5rem;
+            color: #346a5e;
+            font-weight: 600;
+        }
+
+        .highlight-link {
+            background: #f2f5f9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: inline-block;
+            margin: 0.3rem 0 0.5rem;
+            border: 1px solid #d7dee6;
+            font-size: 0.98rem;
+        }
+        .highlight-link a {
+            color: #1d4a6c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .highlight-link a:hover {
+            text-decoration: underline;
+            color: #0c2f47;
+        }
+
+        /* 优势区 格子 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 1rem 0 0.2rem;
+        }
+        .grid-item {
+            background: #f9fbfd;
+            border-radius: 16px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            border: 1px solid #e3e9f0;
+        }
+        .grid-item .num {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2f4b6b;
+            display: block;
+            line-height: 1.2;
+        }
+        .grid-item .label {
+            font-size: 0.85rem;
+            color: #536573;
+        }
+
+        /* faq部分 */
+        .faq-item {
+            border-bottom: 1px solid #e9edf2;
+            padding: 1rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1e2a36;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #3e4e5d;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c7c8b;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #dce3eb;
+            margin-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body { padding: 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .grid-3 { grid-template-columns: 1fr 1fr; }
+            .card { padding: 1.5rem; }
+        }
+        @media (max-width: 440px) {
+            .grid-3 { grid-template-columns: 1fr; }
+            .hero { padding: 2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>JRS直播 · 信息聚合站</h1>
+        <p class="subtitle">一个汇集体育赛事直播资源的信息页面，为喜爱足球、篮球等赛事的观众提供简洁、直接的导航参考。</p>
+        <span class="tagline">客观 · 轻量 · 无冗余</span>
+    </div>
+
+    <!-- 介绍区：站点说明与可信视角 -->
+    <div class="card">
+        <h2>关于这个页面</h2>
+        <p>很多人希望快速找到稳定的直播观看方式，但又不想在杂乱的广告链接中浪费时间。<strong>JRS直播</strong> 是一个在体育爱好者圈子里经常被提及的名字，它聚合了许多第三方直播源与赛事链接。</p>
+        <p>本站并非官方平台，而是一个介绍与整理性质的页面。我们试图用平实的语言告诉你：<strong>JRS直播</strong> 是什么、它通常指向哪些资源、以及使用时需要注意什么。以下信息均来自公开资料与社区讨论，不构成任何承诺或保证。</p>
+        <div class="highlight-link">
+            🔗 了解更多，可前往 <a href="https://now-jrs.com">JRS直播</a> 查看最新可用入口。
+        </div>
+    </div>
+
+    <!-- 优势区 (用数字卡片体现特点) -->
+    <div class="card">
+        <h2>常见优势简述</h2>
+        <p>根据社区反馈与运营观察，<strong>JRS直播</strong> 被提及较多的几个特点包括：</p>
+        <div class="grid-3">
+            <div class="grid-item">
+                <span class="num">⚡ 低延迟</span>
+                <span class="label">多数源延迟控制在10秒内</span>
+            </div>
+            <div class="grid-item">
+                <span class="num">📺 多联赛</span>
+                <span class="label">涵盖英超、欧冠、NBA等主流赛事</span>
+            </div>
+            <div class="grid-item">
+                <span class="num">🔄 持续更新</span>
+                <span class="label">链接失效后常提供替代入口</span>
+            </div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #3d4d5c;">当然，每个直播源的稳定性会受到网络、服务器及版权因素影响，建议根据实际情况选择合适线路。</p>
+    </div>
+
+    <!-- 说明区：内容形态与提醒 -->
+    <div class="card">
+        <h2>内容形态与提醒</h2>
+        <p><strong>JRS直播</strong> 本身并不生产比赛画面，而是将网络上可公开获取的嵌入链接、iframe 或跳转地址进行整理。你可以通过 <a href="https://now-jrs.com" style="color:#1d4a6c; text-decoration: underline;">JRS直播</a> 找到当天的赛事列表，每个赛事对应一个或者多个播放源。</p>
+        <ul>
+            <li>界面通常以列表或卡片形式呈现</li>
+            <li>部分源需要关闭广告拦截器才能正常播放</li>
+            <li>移动端与桌面端均可适配</li>
+            <li>建议优先使用带有「备用」标签的线路</li>
+        </ul>
+        <p style="margin-top: 1rem;">⚠️ 注意：直播链接可能因版权原因随时变动，如果遇到无法播放的情况，可以稍后再试或换一个时间。请合理使用网络资源，遵守当地法律法规。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <h2>常见疑问摘要</h2>
+        <div class="faq-item">
+            <strong>Q: JRS直播 需要注册吗？</strong>
+            <p>A: 一般不需要。大多数情况下直接点击对应赛事即可观看，无需登录或付费。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 为什么有些比赛找不到？</strong>
+            <p>A: 小联赛或冷门场次覆盖率相对较低，优先覆盖五大联赛、NBA、欧冠等关注度高的赛事。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 链接打不开 / 被拦截怎么办？</strong>
+            <p>A: 可以尝试更换浏览器、关闭广告拦截插件，或者使用页面提供的备用域名。最新的可用地址通常会在 <a href="https://now-jrs.com" style="color:#1d4a6c;">JRS直播</a> 更新。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 这个页面和 JRS直播 是什么关系？</strong>
+            <p>A: 这是一个独立的介绍与信息聚合页，目的是提供清晰、克制的引导，并非官方站点。我们与 JRS直播 无任何从属或商业关联。</p>
+        </div>
+    </div>
+
+    <!-- 底部链接 + 说明 -->
+    <div class="footer-note">
+        <p style="margin-bottom: 0.3rem;">本页面仅提供客观信息参考，不存储、不传播任何受版权保护的流媒体内容。</p>
+        <p>🔗 主站链接：<a href="https://now-jrs.com" style="color:#2b4b69; text-decoration: underline;">JRS直播</a>  ·  建议收藏备用</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: #8b9aa9;">—— 2025 · 内容索引页 ——</p>
+    </div>
+</div>
+</body>
+</html>
