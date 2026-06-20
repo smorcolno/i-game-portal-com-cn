@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V体育 · 知识导览 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde8cd 0%, #f9d4a8 40%, #f5c792 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2b241c;
+        }
+
+        .page-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 30, 0.25), 0 6px 12px rgba(0, 0, 0, 0.05);
+            padding: 2.8rem 3rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1.2rem 0.8rem; }
+            .page-card { padding: 1.8rem 1.2rem; border-radius: 28px; }
+        }
+
+        /* 标题区 */
+        .hero {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #f3dac2;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background: #f1d5b6;
+            color: #5a3d28;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #3a281c;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #5f4c3a;
+            margin-top: 0.5rem;
+            max-width: 70%;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { max-width: 100%; font-size: 1rem; }
+        }
+
+        /* 目录网格 —— 知识库入口感 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+
+        .dir-item {
+            background: #faf3eb;
+            border-radius: 24px;
+            padding: 1.1rem 1.4rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            border: 1px solid #eedbcb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .dir-item:hover {
+            background: #f7ede2;
+            box-shadow: 0 4px 10px rgba(120, 70, 30, 0.08);
+        }
+
+        .dir-item span {
+            font-weight: 500;
+            color: #3d2c1d;
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .dir-item small {
+            color: #7a624c;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        /* 内容卡片 */
+        .section-card {
+            background: #fcf6ef;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0;
+            border: 1px solid #f0dfcf;
+        }
+
+        .section-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #3a281c;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .section-card p, .section-card li {
+            color: #3f3227;
+        }
+
+        .section-card ul {
+            padding-left: 1.2rem;
+            list-style: disc;
+        }
+
+        .section-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* 提示区 — 访问提醒 */
+        .notice-area {
+            background: #f5e5d4;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0;
+            border-left: 8px solid #cc9f7a;
+        }
+
+        .notice-area strong {
+            color: #4b3020;
+        }
+
+        /* 相关信息 */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            background: #fcf6ef;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0;
+            border: 1px solid #eedbcb;
+        }
+
+        .info-block {
+            flex: 1 1 180px;
+        }
+
+        .info-block .label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #856b53;
+        }
+
+        .info-block .value {
+            margin-top: 0.2rem;
+            color: #2b1e14;
+        }
+
+        .info-block .value a {
+            color: #7b4f2e;
+            text-decoration: none;
+            font-weight: 500;
+            background: #efe1d1;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+
+        .info-block .value a:hover {
+            background: #dcc6b0;
+        }
+
+        /* 常见问题摘要 */
+        .faq-mini {
+            margin: 2rem 0 0.5rem 0;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #e4cfbb;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #3d2b1b;
+        }
+
+        .faq-a {
+            color: #4d3b2b;
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #7b4f2e;
+            text-decoration: none;
+            font-weight: 500;
+            background: #efe1d1;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        .faq-a a:hover {
+            background: #dcc6b0;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #6f5a48;
+            border-top: 1px solid #eddccb;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        /* 按钮感链接全局 */
+        a[href] {
+            transition: all 0.15s;
+        }
+
+        .btn-like-link {
+            display: inline-block;
+            background: #f1dcc9;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #3f2a1b;
+            text-decoration: none;
+            border: 1px solid #e4cbb4;
+        }
+
+        .btn-like-link:hover {
+            background: #e4c7ab;
+        }
+    </style>
+</head>
+<body>
+<div class="page-card">
+
+    <!-- hero 简明指南 -->
+    <div class="hero">
+        <div class="hero-badge">📘 知识库 · 索引页</div>
+        <h1>V体育 · 使用导向</h1>
+        <p>从零开始了解平台功能、访问方式与常见疑问。本页作为整理过的简明入口，方便你快速定位所需信息。</p>
+    </div>
+
+    <!-- 目录感布局 -->
+    <div class="index-grid">
+        <div class="dir-item"><span>📌 平台概览</span><small>功能与定位简述</small></div>
+        <div class="dir-item"><span>⚙️ 访问方式</span><small>推荐环境与说明</small></div>
+        <div class="dir-item"><span>🔍 内容分类</span><small>赛事 / 数据 / 资讯</small></div>
+        <div class="dir-item"><span>🧭 导航提示</span><small>界面与操作要点</small></div>
+        <div class="dir-item"><span>❓ 常见疑问</span><small>FAQ 摘要</small></div>
+    </div>
+
+    <!-- 介绍区：简明指南 -->
+    <div class="section-card">
+        <h2>📋 平台简介</h2>
+        <p><strong>V体育</strong> 是一个围绕体育赛事与数据服务的平台。页面设计注重信息展示效率，提供赛事动态、统计参考以及相关资讯。无论是快速浏览赛程，还是查阅历史数据，都可以通过清晰的功能分区完成操作。</p>
+        <p style="margin-top:0.6rem;">如果你第一次接触，建议先了解主菜单分类与筛选方式，能更快定位到自己关注的联赛或队伍。各模块之间独立但互通，支持从赛事卡片直接跳转至深度数据页。</p>
+    </div>
+
+    <!-- 特点 + 场景融合 -->
+    <div class="section-card">
+        <h2>⭐ 特点与适用场景</h2>
+        <ul>
+            <li><strong>信息聚合</strong> — 多联赛数据集中展示，减少反复切换的成本。</li>
+            <li><strong>轻量交互</strong> — 页面响应快，适合在移动端或网络条件一般时使用。</li>
+            <li><strong>版本适配</strong> — 支持中英文界面切换，满足不同语言习惯。</li>
+            <li><strong>常用场景</strong> — 赛前查看对阵、赛后查阅统计、关注球队积分走势。</li>
+        </ul>
+        <p style="margin-top: 0.8rem;">你可以随时通过顶部导航栏切换模块，或在搜索框内输入队伍、联赛关键词进行过滤。</p>
+    </div>
+
+    <!-- 提示区：访问提醒 -->
+    <div class="notice-area">
+        <strong>📢 访问提醒</strong>
+        <p style="margin-top: 0.3rem;">使用 <a href="https://webs-vty.com" style="background:#efe1d1; padding:0.05rem 0.6rem; border-radius:30px; text-decoration:none; color:#4a3222; font-weight:500;">V体育</a> 时，建议将浏览器更新至最新版本，以获得完整的布局与交互体验。部分功能（如实时数据刷新）依赖 JavaScript，请确保未禁用脚本。若页面加载异常，可尝试清理缓存或切换网络环境后重试。</p>
+        <p style="margin-top: 0.4rem;">此外，平台不存储个人敏感信息，公共设备使用完毕后请注意退出账号，以保护浏览记录。</p>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-row">
+        <div class="info-block">
+            <div class="label">🌐 官方资源</div>
+            <div class="value"><a href="https://webs-vty.com">V体育</a></div>
+        </div>
+        <div class="info-block">
+            <div class="label">📁 内容类别</div>
+            <div class="value">足球 · 篮球 · 网球 · 更多</div>
+        </div>
+        <div class="info-block">
+            <div class="label">🔧 技术提示</div>
+            <div class="value">启用 JS · 允许 Cookie</div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2 style="font-size:1.3rem; font-weight:600; color:#3a281c; margin-bottom:0.5rem;">❓ 常见疑问摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">如何快速找到正在进行的比赛？</div>
+            <div class="faq-a">首页默认展示「进行中」赛事卡片，也可以在「赛程」模块下筛选日期。如有疑问，可参考 <a href="https://webs-vty.com">V体育</a> 内的页面引导提示。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">移动端页面显示不全怎么办？</div>
+            <div class="faq-a">尝试横屏浏览，或检查是否开启了桌面版视图。部分深度数据页建议在平板或更大屏幕上查看。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">数据更新频率是多少？</div>
+            <div class="faq-a">常规赛事数据在比赛进行时每1–2分钟同步一次。赛后统计通常在完赛15分钟内更新完毕。</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <a href="https://webs-vty.com" style="background:#efe1d1; padding:0.2rem 1rem; border-radius:30px; text-decoration:none; color:#4a3222; font-weight:500;">V体育</a> · 本页面为知识库入口式导览，内容仅供参考。具体功能以实际平台为准。
+    </div>
+</div>
+</body>
+</html>
